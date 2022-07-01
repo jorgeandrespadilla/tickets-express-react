@@ -1,8 +1,10 @@
 import express from "express";
 import cors from "cors";
+import path, { join } from "path";
+import { fileURLToPath } from "url";
 
-import { getPeople } from "./data/people";
-import { filterByDate } from "./filters";
+import { getPeople } from "./data/people.js";
+import { filterByDate } from "./filters.js";
 
 const port = process.env.PORT || 5100;
 
@@ -11,6 +13,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.static(join(__dirname, "/../client/build")));
 
 app.get("/health", async (req, res) => {
