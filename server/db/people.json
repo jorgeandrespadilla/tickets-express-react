@@ -1,5 +1,7 @@
 [
-  { "id": 1, "name": "Andres" },
-  { "id": 2, "name": "Daniela" },
-  { "id": 3, "name": "Jose" }
+  { "id": 1, "name": "Daniela", "buy_date": "2022-3-1", "type": "semestral" },
+  { "id": 2, "name": "Franklin", "buy_date": "2022-3-3", "type": "mensual" },
+  { "id": 3, "name": "Diego", "buy_date": "2022-4-1", "type": "anual" },
+  { "id": 4, "name": "Andres", "buy_date": "2022-1-1", "type": "mensual" },
+  { "id": 5, "name": "Rodrigo", "buy_date": "2022-1-1", "type": "semestral" }
 ]
