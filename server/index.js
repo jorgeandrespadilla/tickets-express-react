@@ -4,7 +4,7 @@ import path, { join } from "path";
 import { fileURLToPath } from "url";
 
 import { getPeople } from "./data/people.js";
-import { filterByDate } from "./filters.js";
+import { filterExpirationByDate } from "./filters.js";
 
 const port = process.env.PORT || 5100;
 
@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(join(__dirname, "/../client/build")));
 
-app.get("/health", async (req, res) => {
+app.get("/health", (req, res) => {
   return res.send("ok");
 });
 
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 
 // Retrieve all filtered persons and data by date
 app.post("/", (req, res) => {
-  return res.json(filterByDate(getPeople(), req.body.date));
+  return res.json(filterExpirationByDate(getPeople(), new Date(req.body.date)));
 });
 
 // AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
