@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(join(__dirname, "/../client/build")));
 
-app.get("/health", async (req, res) => {
+app.get("/health", (req, res) => {
   return res.send("ok");
 });
 
