@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 import { getPeople } from "./data/people.js";
 import { filterExpirationByDate } from "./filters.js";
 
-const port = process.env.PORT || 5100;
+const port = process.env.PORT || 5000;
 
 const app = express();
 
