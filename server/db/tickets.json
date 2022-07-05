@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "mensual", "max_tickets": 96, "price": 25 },
+  { "id": 2, "name": "semestral", "max_tickets": 576, "price": 60 },
+  { "id": 3, "name": "anual", "max_tickets": 1052, "price": 80 }
+]
