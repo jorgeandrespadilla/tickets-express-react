@@ -22,7 +22,8 @@ app.get("/health", (req, res) => {
 });
 
 // Retrieve all persons and data
-app.get("/", (req, res) => {
+app.get("/people", (req, res) => {
+  console.log("a");
   return res.json(getPeople());
 });
 

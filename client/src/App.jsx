@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import People from "./components/People";
-import FilterByDate from "./components/FilterByDate";
 import { fetchApi } from "./hooks/fetchApi";
 
 function App() {
-  const [people, setPeople] = useState();
-  const [filteredPeople, setFilteredPeople] = useState();
+  const [people, setPeople] = useState([]);
+  const [filteredPeople, setFilteredPeople] = useState([]);
   const [status, setStatus] = useState(false);
   const [date, setDate] = useState();
 
@@ -15,6 +14,12 @@ function App() {
       setStatus(response.ok);
     }
     getStatus();
+
+    async function getPeople() {
+      const response = await fetchApi("/people");
+      setPeople(response.data);
+    }
+    getPeople();
   }, []);
 
   async function fetchDate(e) {
@@ -25,24 +30,25 @@ function App() {
     const response = await fetchApi("/", "POST", { date });
 
     if (!response.ok) return console.log(response.status);
+    console.log(response);
 
-    setPeople(response.data.data);
+    setFilteredPeople(response.data);
   }
 
   return status ? (
-    <>
-      <People props={people} />
+    <section>
+      <People people={people} />
       <form onSubmit={fetchDate}>
         <label>First Date</label>
         <input
           type="date"
-          name="startDate"
+          name="date"
           onChange={(e) => setDate(e.target.value)}
         />
         <button type="submit">Search</button>
       </form>
-      <FilterByDate props={filteredPeople} />
-    </>
+      <People people={filteredPeople} />
+    </section>
   ) : (
     "Api down"
   );
