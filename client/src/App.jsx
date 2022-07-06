@@ -10,13 +10,15 @@ function App() {
 
   useEffect(() => {
     async function getStatus() {
-      const response = await fetchApi("/health");
+      const response = await fetchApi("/api/health");
+      console.log(response);
+
       setStatus(response.ok);
     }
     getStatus();
 
     async function getPeople() {
-      const response = await fetchApi("/people");
+      const response = await fetchApi("/api/people");
       setPeople(response.data);
     }
     getPeople();
@@ -27,10 +29,9 @@ function App() {
 
     if (date == null) return;
 
-    const response = await fetchApi("/", "POST", { date });
+    const response = await fetchApi("/api/people", "POST", { date });
 
     if (!response.ok) return console.log(response.status);
-    console.log(response);
 
     setFilteredPeople(response.data);
   }
