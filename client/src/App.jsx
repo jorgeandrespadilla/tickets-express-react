@@ -37,7 +37,7 @@ function App() {
 
   return status ? (
     <section>
-      <People people={people} />
+      <People people={people} title={"DB People"} />
       <form onSubmit={fetchDate}>
         <label>First Date</label>
         <input
@@ -47,7 +47,7 @@ function App() {
         />
         <button type="submit">Search</button>
       </form>
-      <People people={filteredPeople} />
+      <People people={filteredPeople} title={"Filtered people"} />
     </section>
   ) : (
     "Api down"
