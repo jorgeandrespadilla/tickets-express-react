@@ -2,7 +2,8 @@
 export const filterExpirationByDate = (people, tickets_data, date) => {
   return people
     .map((item) => {
-      let monthsToAdd = item.ticket_type === 1 ? 1 : item.ticket_type === 2 ? 6 : 12;
+      let monthsToAdd =
+        item.ticket_type === 1 ? 1 : item.ticket_type === 2 ? 6 : 12;
       return {
         id: item.id,
         name: item.name,
@@ -14,7 +15,8 @@ export const filterExpirationByDate = (people, tickets_data, date) => {
           )
         ),
         remaining_tickets:
-          tickets_data.find((ticket) => ticket.id === item.ticket_type).max_tickets -
+          tickets_data.find((ticket) => ticket.id === item.ticket_type)
+            .max_tickets -
           Math.floor(
             (new Date() - new Date(item.buy_date)) / (1000 * 3600 * 24)
           ),
