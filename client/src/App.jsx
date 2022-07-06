@@ -30,7 +30,6 @@ function App() {
     const response = await fetchApi("/", "POST", { date });
 
     if (!response.ok) return console.log(response.status);
-    console.log(response);
 
     setFilteredPeople(response.data);
   }

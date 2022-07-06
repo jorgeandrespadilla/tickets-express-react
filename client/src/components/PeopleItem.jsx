@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function PeopleItem({ person }) {
-  console.log(person);
   return (
     <li>
       {"ID: " +
