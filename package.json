@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "start": "npm run api && npm run frontend",
-    "frontend": "cd ../client && npm install && npm start",
-    "api": "cd server && npm install && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "concurrently --kill-others npm:start:*",
+    "start:client": "cd ./client && npm start",
+    "start:server": "cd ./server && npm start",
+    "prepare": "npm install && cd ./client && npm install && npm run build && cd ../server && npm install"
+  },
+  "dependencies": {
+    "concurrently": "^7.4.0"
   }
 }
