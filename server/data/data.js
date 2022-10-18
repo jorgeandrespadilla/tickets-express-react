@@ -1,5 +1,15 @@
-import people from "../models/people.json" assert { type: "json" };
-import tickets from "../models/tickets.json" assert { type: "json" };
+import { readFile } from 'fs/promises';
+
+const people = JSON.parse(
+  await readFile(
+    new URL('../models/people.json', import.meta.url)
+  )
+);
+const tickets = JSON.parse(
+  await readFile(
+    new URL('../models/tickets.json', import.meta.url)
+  )
+);
 
 export const getPeople = () => {
   return people;
